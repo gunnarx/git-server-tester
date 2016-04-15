@@ -46,17 +46,17 @@ while true ; do
   echo -n "$(date): Trying $PICK random repos. "
   for repo in $repos ; do
     url="$FETCH_URL/$repo"
-     git ls-remote $url HEAD >/dev/null
-     if [ $? -eq 0 ] ; then 
-        echo -n ok,
-     else
-       echo
-       echo "$(date) FAILED FETCHING $url"
-       exit 1
-     fi
-   done
+    git ls-remote $url HEAD >/dev/null
+    if [ $? -eq 0 ] ; then 
+      echo -n ok,
+    else
+      echo
+      echo "$(date) FAILED FETCHING $url"
+      exit 1
+    fi
+  done
 
-   echo " Waiting $WAIT seconds."
-   sleep $WAIT
+  echo " Waiting $WAIT seconds."
+  sleep $WAIT
 
 done
