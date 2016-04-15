@@ -11,7 +11,7 @@ PICK=3
 blacklist="canfw.git|franca-mdg.git|genivi-ocf-demo.git|ipc/af_bus-glib.git|persistence/persistence-configuration-tool.git|popupmanager.git|rvi_core.git|user-management/user-data-migration-service.git"
 
 echo Getting repository list...
-REPOLIST="$(curl -s $REPOLIST_BASE | fgrep 'class="list" href="' | sed 's/.*p=\(.*.git\);.*/\1/' | egrep -v \"$blacklist\")"
+REPOLIST="$(curl -s $REPOLIST_BASE | fgrep 'class="list" href="' | sed 's/.*p=\(.*.git\);.*/\1/' | egrep -v $blacklist)"
 LENGTH=$(echo "$REPOLIST" | wc -l)
 
 echo
@@ -60,5 +60,3 @@ while true ; do
    sleep $WAIT
 
 done
-
-sleep $WAIT
